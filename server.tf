@@ -4,11 +4,19 @@ data "aws_ami" "centos" {
   owners      = ["973714476881"]
 }
 
+data "aws_security_group" "allow-all" {
+  name = "allow-all"
+}
 
+variable "instance_type" {
+  default = "t3.small"
+}
 
 resource "aws_instance" "frontend" {
   ami           = data.aws_ami.centos.image_id
-  instance_type = "t3.micro"
+  instance_type = var.instance_type
+  vpc_security_group_ids = [ data.aws_security_group.allow-all.id ]
+
 
   tags = {
     Name = "frontend"
@@ -24,7 +32,9 @@ resource "aws_route53_record" "frontend" {
 
 resource "aws_instance" "mongodb" {
   ami           = data.aws_ami.centos.image_id
-  instance_type = "t3.micro"
+  instance_type = var.instance_type
+  vpc_security_group_ids = [ data.aws_security_group.allow-all.id ]
+
 
   tags = {
     Name = "mongodb"
@@ -41,7 +51,9 @@ resource "aws_route53_record" "mongodb" {
 
 resource "aws_instance" "catalogue" {
   ami           = data.aws_ami.centos.image_id
-  instance_type = "t3.micro"
+  instance_type = var.instance_type
+  vpc_security_group_ids = [ data.aws_security_group.allow-all.id ]
+
 
   tags = {
     Name = "catalogue"
@@ -57,7 +69,9 @@ resource "aws_route53_record" "catalogue" {
 
 resource "aws_instance" "redis" {
   ami           = data.aws_ami.centos.image_id
-  instance_type = "t3.micro"
+  instance_type = var.instance_type
+  vpc_security_group_ids = [ data.aws_security_group.allow-all.id ]
+
 
   tags = {
     Name = "redis"
@@ -73,7 +87,9 @@ resource "aws_route53_record" "redis" {
 
 resource "aws_instance" "user" {
   ami           = data.aws_ami.centos.image_id
-  instance_type = "t3.micro"
+  instance_type = var.instance_type
+  vpc_security_group_ids = [ data.aws_security_group.allow-all.id ]
+
 
   tags = {
     Name = "user"
@@ -89,7 +105,9 @@ resource "aws_route53_record" "user" {
 
 resource "aws_instance" "cart" {
   ami           = data.aws_ami.centos.image_id
-  instance_type = "t3.micro"
+  instance_type = var.instance_type
+  vpc_security_group_ids = [ data.aws_security_group.allow-all.id ]
+
 
   tags = {
     Name = "cart"
@@ -104,7 +122,9 @@ resource "aws_route53_record" "cart" {
 }
 resource "aws_instance" "mqsql" {
   ami           = data.aws_ami.centos.image_id
-  instance_type = "t3.micro"
+  instance_type = var.instance_type
+  vpc_security_group_ids = [ data.aws_security_group.allow-all.id ]
+
 
   tags = {
     Name = "mysql"
@@ -120,7 +140,9 @@ resource "aws_route53_record" "mqsql" {
 
 resource "aws_instance" "shipping" {
   ami           = data.aws_ami.centos.image_id
-  instance_type = "t3.micro"
+  instance_type = var.instance_type
+  vpc_security_group_ids = [ data.aws_security_group.allow-all.id ]
+
 
   tags = {
     Name = "shipping"
@@ -135,7 +157,9 @@ resource "aws_route53_record" "shipping" {
 }
 resource "aws_instance" "rabbitmq" {
   ami           = data.aws_ami.centos.image_id
-  instance_type = "t3.micro"
+  instance_type = var.instance_type
+  vpc_security_group_ids = [ data.aws_security_group.allow-all.id ]
+
 
   tags = {
     Name = "rabbitmq"
@@ -151,7 +175,9 @@ resource "aws_route53_record" "rabbitmq" {
 
 resource "aws_instance" "payment" {
   ami           = data.aws_ami.centos.image_id
-  instance_type = "t3.micro"
+  instance_type = var.instance_type
+  vpc_security_group_ids = [ data.aws_security_group.allow-all.id ]
+
 
   tags = {
     Name = "payment"
