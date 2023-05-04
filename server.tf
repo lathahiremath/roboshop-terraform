@@ -67,7 +67,7 @@ resource "aws_instance" "instance" {
 
 resource "aws_route53_record" "records" {
   for_each               = var.components
-  zone_id = "Z03986262CQPCHNJNZM9L"
+  zone_id = "Z03669871OW33FYX3AD4W"
   name    = "${each.value["name"]}-dev.rdevopsb72.online"
   type    = "A"
   ttl     = 30
