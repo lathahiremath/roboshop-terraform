@@ -7,9 +7,9 @@ resource "aws_instance" "instance" {
   tags = {
     Name = each.value["name"]
   }
-}
+
 provisioner "remote-exec" {
-connection {
+  connection {
   type     = "ssh"
   user     = "centos"
   password = "DevOps321"
@@ -23,6 +23,7 @@ connection {
       "cd roboshop-shell",
       "sudo bash ${each.value["name"]}.sh"
   ]
+}
 }
 
 resource "aws_route53_record" "records" {
