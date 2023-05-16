@@ -27,7 +27,7 @@ provisioner "remote-exec" {
 }
 
 resource "aws_route53_record" "records" {
-  for_each               = var.components
+  for_each = var.components
   zone_id = "Z03669871OW33FYX3AD4W"
   name    = "${each.value["name"]}-dev.latha.fun.online"
   type    = "A"
