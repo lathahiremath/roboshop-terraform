@@ -20,7 +20,7 @@ resource "aws_instance" "instance" {
   type     = "ssh"
   user     = "centos"
   password = "DevOps321"
-  host     = [aws_instance.instance[each.value["name"]].private_ip]
+  host     = aws_instance.instance[each.value["name"]].private_ip
   }
 
 
