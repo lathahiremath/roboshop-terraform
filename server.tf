@@ -35,7 +35,7 @@ resource "aws_instance" "instance" {
 resource "aws_route53_record" "records" {
   for_each = var.components
   zone_id = "Z03669871OW33FYX3AD4W"
-  name    = "${each.value["name"]}-dev.latha.fun.online"
+  name    = "${each.value["name"]}-dev"
   type    = "A"
   ttl     = 30
   records = [aws_instance.instance[each.value["name"]].private_ip]
