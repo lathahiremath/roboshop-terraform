@@ -1,4 +1,4 @@
-components={
+components = {
   frontend = {
     name          = "frontend"
     instance_type = "t3.small"
@@ -26,12 +26,11 @@ components={
   mysql = {
     name          = "mysql"
     instance_type = "t3.small"
-    password      = "Roboshop@1"
+    password      = "RoboShop@1"
   }
   shipping = {
     name          = "shipping"
     instance_type = "t3.medium"
-    password      = "Roboshop@1"
   }
   rabbitmq = {
     name          = "rabbitmq"
@@ -44,4 +43,5 @@ components={
     password      = "roboshop123"
   }
 }
+
 env = "dev"
