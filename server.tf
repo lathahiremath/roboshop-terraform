@@ -34,7 +34,7 @@ resource "aws_instance" "instance" {
 
 resource "aws_route53_record" "records" {
   for_each = var.components
-  zone_id = "Z03669871OW33FYX3AD4W"
+  zone_id = "Z10325692IM5OANUYJ0F1"
   name    = "${each.value["name"]}-dev.latha.fun.online"
   type    = "A"
   ttl     = 30
