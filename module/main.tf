@@ -32,7 +32,7 @@ resource "null_resource" "provisioner" {
 
 resource "aws_route53_record" "records" {
   zone_id = "Z10325692IM5OANUYJ0F1"
-  name    = "${each.value["name"]}-dev.latha.fun.online"
+  name    = "${var.component_name}-dev.latha.fun.online"
   type    = "A"
   ttl     = 30
   records = [aws_instance.instance.private_ip]
